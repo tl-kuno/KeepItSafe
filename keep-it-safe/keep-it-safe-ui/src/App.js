@@ -18,11 +18,6 @@ function App() {
   const Login = details => {
     console.log(details);
 
-    if (details.username == credentials.username && details.password == credentials.password)
-      console.log("Logged in");
-    } else {
-    console.log("Login does not exist")
-    }
   }
   const Logout = () => {
     console.log("Logout");
