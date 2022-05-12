@@ -10,9 +10,9 @@ function LoginForm({ Login, error }) {
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form class="login-form" onSubmit={submitHandler}>
             <div className="form-inner">
-                <h2>Welcome to KeepitSafe</h2>
+                <h2>KeepitSafe</h2>
                 {(error !== "") ? (<div className= "error-msg">{error}</div>): ""}
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
