@@ -17,18 +17,32 @@ function App() {
   
   const Login = details => {
     console.log(details);
+    if (details.username === credentials.username && details.password === credentials.password){
+      console.log("Logged in")
+      setUser({
+        username:details.username,
+        password:details.password
+      });
+    } else {
+      console.log("Incorrect username or password");
+      setError("Incorrect username or password")
+    }
 
   }
   const Logout = () => {
     console.log("Logout");
+    setUser({
+      username:"",
+      password:""    
+    })
   };
 
   return (
     <div className="login-page">
       {(user.username !== "") ? (
         <div className="welcome">
-          <h2 className="greeting">Welcome, <span>{user.login}</span></h2>
-          <button>Logout</button>
+          <h2 className="greeting">Welcome, <span>{credentials.username}</span></h2>
+          <button onClick={Logout}>Logout</button>
       </div>
       ) : (
         <LoginForm Login={Login} error={error} />
