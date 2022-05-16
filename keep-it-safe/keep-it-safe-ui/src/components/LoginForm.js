@@ -12,7 +12,7 @@ function LoginForm({ Login, error }) {
     return (
         <form class="login-form" onSubmit={submitHandler}>
             <div className="form-inner">
-                <h2>KeepitSafe</h2>
+                <h1>KeepItSafe</h1>
                 {(error !== "") ? (<div className= "error-msg">{error}</div>): ""}
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>
