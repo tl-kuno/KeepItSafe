@@ -5,7 +5,7 @@ import logo from '../images/keys.png';
 
 function Navigation() {
   return (
-    <Navbar class="navbar navbar-default navbar-fixed-top" bg="dark" variant="dark" sticky="top">
+    <Navbar className="navbar navbar-default navbar-fixed-top" bg="dark" variant="dark" sticky="top">
     <Container>
     <Navbar.Brand>
         <img className="navbar-logo" src={logo} alt="logo"/>

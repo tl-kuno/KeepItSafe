@@ -14,13 +14,22 @@
   justify-content: center;
 }
 
-.login-form {
+.block-container {
   display: block;
   position: relative;
   border-radius: 5px;
+  margin: 10px;
 }
 
-.login-form:after {
+form.block-container {
+  padding: 0;
+}
+
+div.block-container {
+  padding: 0;
+}
+
+.block-container:after {
   border-radius: 5px;
   content: '';
   display: block;
@@ -33,26 +42,7 @@
   background-image: linear-gradient(to bottom right, #00819e, #00e0d5);
 }
 
-.logged-in {
-  display: block;
-  position: relative;
-  border-radius: 5px;
-}
-
-.logged-in:after {
-  border-radius: 5px;
-  content: '';
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -5px;
-  background-image: linear-gradient(to bottom right, #00819e, #00e0d5);
-}
-
-.form-inner {
+.block-container-inner {
   border-radius: 5px;
   position: relative;
   display: block;
@@ -61,48 +51,33 @@
   z-index: 2;
 }
 
-.logged-in-inner {
-  border-radius: 5px;
-  position: relative;
-  display: block;
-  background-color: #F2F4F8;
-  padding: 30px;
-  z-index: 2;
-  text-align: center;
-}
-
-.form-inner h2 {
+.block-container-inner h2 {
   color:#00323D;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 
-.logged-in-inner h2 {
-  color:#00323D;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.form-inner .form-group {
+.block-container-inner .form-group {
   display: block;
   width: 250px;
   margin-bottom: 15px;
 }
 
-.form-inner .form-group label {
+.block-container-inner .form-group label {
   display: block;
   color:#353131;
   font-size: 16px;
   margin-bottom: 5px;
   transition: 0.4s;
+  padding: 0;
 }
 
-.form-inner .form-group:focus-within label {
+.block-container-inner .form-group:focus-within label {
   color: #02c0b7;
 }
 
-.form-inner .form-group input {
+.block-container-inner .form-group input {
   display: block;
   width: 100%;
   padding: 10px 15px;
@@ -111,7 +86,7 @@
   transition: 0.4s;
 }
 
-.form-inner input[type="submit"] {
+.block-container-inner input[type="submit"] {
   display: inline-block;
   padding: 10px 15px;
   border-radius: 8px;
@@ -124,7 +99,7 @@
   cursor: pointer;
 }
 
-.form-inner input[type="submit"]:hover {
+.block-container-inner input[type="submit"]:hover {
   background-position: 100% 0%;
 }
 
@@ -187,13 +162,6 @@
   background-position: 100% 0%;
 }
 
-.main-content {
-  display: block;
-  width: 85vw;
-  margin: auto;
-}
-
-
 .toggle {
   position: relative;
   display: inline-block;
@@ -254,7 +222,7 @@
   margin: 0;
 }
 
-.toggle-container {
+.toggle-block-container {
   width: fit-content;
   margin: 0;
 }
@@ -292,11 +260,15 @@
   cursor: pointer;
 }
 
-
 .password-input {
   display: inline-block;
 }
 
 .password-gen {
   display: inline-block;
+}
+
+.main-content {
+  width: 80vw;
+  margin: auto;
 }

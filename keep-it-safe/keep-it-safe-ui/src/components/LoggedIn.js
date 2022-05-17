@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function LoggedIn() {
 
     return (
-        <div class="logged-in" >
-            <div className="logged-in-inner">
+        <div class="block-container" >
+            <div className="block-container-inner">
                 <h1>Welcome to KeepItSafe</h1>
                 <h2>What would you like to do?</h2>
                 <div className="logged-in-nav">
