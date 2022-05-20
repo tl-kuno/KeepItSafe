@@ -25,7 +25,7 @@ function AddNew(){
   const [loginList, setLoginList] = useState([]);
 
   const addLogin = () => {
-    Axios.post("http://localhost:4500/addnew", {
+    Axios.post("http://localhost:4500/add-new", {
       websiteName: websiteName,
       websiteDomain: websiteDomain,
       username: username,
@@ -71,7 +71,7 @@ function AddNew(){
     <div>
       <Navigation />
       <div className ="main-content">
-        <form className="block-container" action="/events" method="POST">
+        <form className="block-container">
           <div className='block-container-inner'>
           <div className="form-field--container">
             <div className="form-field-float">

@@ -15,14 +15,15 @@ const db = mysql.createConnection({
 
 PORT = 4500
 
-app.post('/addnew', (req, res) => {
+app.post('/add-new', (req, res) => {
     console.log(req.body);
-    const website = req.body.website;
+    const websiteName = req.body.websiteName;
+    const websiteDomain = req.body.websiteDomain;
     const username = req.body.username;
     const password = req.body.password;
 
-    db.query("INSERT INTO Logins (website, username, password) VALUES (?, ?, ?)", 
-            [website, username, password], 
+    db.query("INSERT INTO Logins (websiteName, websiteDomain, username, password) VALUES (?, ?, ?, ?)", 
+            [websiteName, websiteDomain, username, password], 
             (err, result) =>  {
                 if (err) {
                     console.log(err)
