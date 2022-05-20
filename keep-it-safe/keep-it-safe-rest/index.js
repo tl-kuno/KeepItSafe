@@ -22,7 +22,7 @@ app.post('/add-new', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    db.query("INSERT INTO Logins (websiteName, websiteDomain, username, password) VALUES (?, ?, ?, ?)", 
+    db.query("INSERT INTO logins (websiteName, websiteDomain, username, password) VALUES (?, ?, ?, ?)", 
             [websiteName, websiteDomain, username, password], 
             (err, result) =>  {
                 if (err) {
@@ -34,6 +34,18 @@ app.post('/add-new', (req, res) => {
             }
         );
 });
+
+app.get('/view-all', (req, res) => {
+    db.query("SELECT * FROM logins", 
+    (err, result) =>  {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(result);
+        }
+    });
+});
+
 
 app.listen(port=PORT, () => 
 console.log(`Server is running on port ${PORT}`));

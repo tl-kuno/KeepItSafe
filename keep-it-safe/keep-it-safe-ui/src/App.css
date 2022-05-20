@@ -300,3 +300,24 @@ div.block-container {
   padding: 3px;
   align-content: left;
 }
+
+.view-all-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  height: 50vh;
+  overflow: auto;
+  border: solid;
+  border-width: 1px;
+}
+
+td, tfoot, th, thead, tr {
+  border-color: #353131;
+  border-width: 1px;
+}
+
+td {
+  padding-left: 5px;
+  padding-right: 7px;
+  
+}
