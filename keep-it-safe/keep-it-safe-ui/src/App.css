@@ -272,3 +272,31 @@ div.block-container {
   width: 80vw;
   margin: auto;
 }
+
+.form-field--container {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  text-align: left;
+  width: fit-content;
+  margin: auto;
+}
+
+.form-field-float{
+  flex: 1;
+  align-content: top;
+  padding-left: 10px;
+}
+
+
+.form-field--label {
+  padding: 3px;
+  padding-bottom: 0px;
+  text-align: left;
+  margin: 0px;
+}
+
+.form-field--entry {
+  padding: 3px;
+  align-content: left;
+}
