@@ -15,6 +15,8 @@ function Navigation() {
       <Nav.Link href="/view-all">View All</Nav.Link>
     </Nav>
     <Nav className="justify-content-end">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+      <button class="btn btn-outline-success" type="submit">Search</button>
       <Nav.Link href="/">Logout</Nav.Link>
     </Nav>
     </Container>

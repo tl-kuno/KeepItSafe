@@ -1,3 +1,4 @@
+
 import React, {useState} from 'react';
 import Navigation from '../components/Navigation';
 import ToggleSwitch from '../components/ToggleSwitch';
@@ -110,7 +111,7 @@ function AddNew(){
                       id="passwordField"
                       type="password"
                       required
-                      placeholder='click to generate'
+                      placeholder='click + to generate'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       />
