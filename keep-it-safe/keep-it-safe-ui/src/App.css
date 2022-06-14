@@ -122,9 +122,9 @@ div.block-container {
   border-radius: 8px;
 }
 
-.logout button{
+button{
   display: inline-block;
-  padding: 8px 12px;
+  padding: 4px 6px;
   border-radius: 8px;
   background-image: linear-gradient(to right, #00819e, 50%, #00819e, 50%, #00e0d5);
   background-size: 200%;
@@ -135,7 +135,7 @@ div.block-container {
   cursor: pointer;
 }
 
-.logout button:hover {
+button:hover {
   background-position: 100% 0%;
 }
   
@@ -279,7 +279,6 @@ div.block-container {
   justify-content: center;
   text-align: left;
   width: fit-content;
-  margin: auto;
 }
 
 .form-field-float{
@@ -301,23 +300,105 @@ div.block-container {
   align-content: left;
 }
 
-.view-all-container {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  height: 50vh;
-  overflow: auto;
-  border: solid;
-  border-width: 1px;
-}
-
 td, tfoot, th, thead, tr {
+  width: fit-content;
+  padding: 10px;
   border-color: #353131;
   border-width: 1px;
+  font-size: 14px;
+}
+
+thead, th {
+  position: sticky;
 }
 
 td {
   padding-left: 5px;
   padding-right: 7px;
   
+}
+
+.search-suggestion {
+  margin-top: 5px;
+  width: 600px;
+  max-height: 450px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.search-suggestion::-webkit-scrollbar {
+  width: 16px;
+}
+
+.search-suggestion::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.search-suggestion::-webkit-scrollbar-thumb {
+  background-color: #777279;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.button-link {
+  border: none;
+  background-color: #00323D;
+  background-image: none;
+  background-size: 100%;
+  margin: auto;
+  padding: none;
+  color:#d6e4ff;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.button-link:hover {
+  border: none;
+  background-color: #c0849a;
+  background-image: none;
+  background-size: 100%;
+  margin: auto;
+  padding: none;
+  color:#8d1a74;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.span-button {
+  background-color: #82d6d2;
+  border-radius: 5px;
+  margin: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.span-button:hover {
+  background-color: #02c0b7;
+}
+
+.login-list {
+  margin: 0px;
+}
+
+td {
+  width: fit-content;
+}
+
+.hidetext { -webkit-text-security: circle; }
+
+.table-key {
+  margin-top: 10px;
+  line-height:6px;
+  font-size: 12px;
+}
+.key-item {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.describe-gen {
+  width: 350px;
+  text-align: justify;
 }

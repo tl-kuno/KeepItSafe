@@ -35,7 +35,7 @@ function Home() {
   };
 
 return (
-    <body>
+    <div>
       <div className="login-page">
       {(user.username !== "") ? (
       <div className="welcome">
@@ -50,7 +50,7 @@ return (
       </div>
       )}
       </div>
-    </body>
+    </div>
   );
 };
 

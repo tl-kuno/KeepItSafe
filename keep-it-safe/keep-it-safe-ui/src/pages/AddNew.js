@@ -1,13 +1,12 @@
-
 import React, {useState} from 'react';
+import LoginDataService from '../services/login'
 import Navigation from '../components/Navigation';
 import ToggleSwitch from '../components/ToggleSwitch';
 import ToggleView from '../components/ToggleView';
 import Footer from '../components/Footer';
 import Axios from 'axios';
-import add from '../images/plus.png'
 
-function AddNew(){
+const AddNew = props => {
   
   const [viewSettings, setViewSettings] = useState(false);
   const [viewPassword, setViewPassword] = useState(false);
@@ -19,29 +18,17 @@ function AddNew(){
   const [numChar, setNumChar] = useState(12);
   
   const [websiteName, setWebsiteName] = useState('');
-  const [websiteDomain, setWebsiteDomain] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loginList, setLoginList] = useState([]);
-
   const addLogin = () => {
-    Axios.post("http://localhost:4500/add-new", {
+    var data = {
       websiteName: websiteName,
-      websiteDomain: websiteDomain,
       username: username,
       password: password,
-    }).then(() => {
-      setLoginList([
-        ...loginList,
-        {
-          websiteName: websiteName,
-          websiteDomain: websiteDomain,
-          username: username,
-          password: password,
-        },
-      ]);
-    });
+    }
+    LoginDataService.createLogin(data)
+    alert(`Your login for ${websiteName} has been saved`)
   };
 
   async function generatePassword(e) {
@@ -67,6 +54,11 @@ function AddNew(){
     } 
   }
 
+  
+  function copyPassword() {
+    navigator.clipboard.writeText(password)
+    alert(`Password copied`)
+  }
 
   return (
     <div>
@@ -74,6 +66,8 @@ function AddNew(){
       <div className ="main-content">
         <form className="block-container">
           <div className='block-container-inner'>
+          <h3>Password Generator</h3>
+          <p className="describe-gen">Enter your own password to save or generate a random, highly secure password.</p>
           <div className="form-field--container">
             <div className="form-field-float">
               <div className = "enable-save" style={{display:enableSave ? 'block': 'none'}}>
@@ -84,15 +78,6 @@ function AddNew(){
                       required
                       value={websiteName}
                       onChange={(e) => setWebsiteName(e.target.value)}
-                      />
-                  </div>
-                  <div className="form-field--entry">
-                    <label>Website Domain: </label><br/>
-                    <input
-                      type='text'
-                      required
-                      value={websiteDomain}
-                      onChange={(e) => setWebsiteDomain(e.target.value)}
                       />
                   </div>
                   <div className="form-field--entry">
@@ -115,15 +100,18 @@ function AddNew(){
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       />
-                      <span onClick={generatePassword}>
-                      <img 
-                      className="navbar-logo" 
-                      src={add} alt="view"/>
-                      </span>
+                      <span className="span-button" onClick={generatePassword}><i class="bi bi-plus-square"/></span>
                     <ToggleView
                       toggleState={viewPassword}
-                      toggleFunction = {passwordVisibility}/>
+                      toggleFunction ={passwordVisibility}/>
+                      <span className="span-button" onClick={() => {copyPassword()}}><i className="bi bi-clipboard"/></span>
               </div>
+              <div className='table-key'>
+                  <span className='key-item'><i className="bi bi-plus-square"/>    Generate Password</span>
+                  <span className='key-item'><i className="bi bi-eye"/>    View/Hide Password</span>
+                  <span className='key-item'><i className="bi bi-clipboard"/>    Copy Password</span>
+                </div>
+                <br></br>
                   <div className="form-field--entry">
                     <button onClick={addLogin} style={{display:enableSave ? 'block': 'none'}} >Save</button>
                   </div>
@@ -131,7 +119,7 @@ function AddNew(){
                 <ToggleSwitch
                     isOn={enableSave}
                     handleToggle = {() => setEnableSave(!enableSave)}/>
-                <div className='toggle-label'>Enable Saving</div><br/> 
+                <div className='toggle-label'>Enable Saving</div><br/>
                 <ToggleSwitch
                     isOn={viewSettings}
                     handleToggle = {() => setViewSettings(!viewSettings)}/>
@@ -143,6 +131,8 @@ function AddNew(){
           <div className="form-field--container">
             <div className="form-field-float">
               <div className = "form-field--entry" id="viewSettings" style={{display:viewSettings ? 'block': 'none'}}>
+              <hr></hr>
+              <p className="describe-gen">Set password length and allowed characters</p>
                 <div className='toggle-block-container'>
                   <ToggleSwitch
                     isOn={useLower}
@@ -169,7 +159,7 @@ function AddNew(){
                 </div>
                 <div>
                 Number of Characters: 
-                <input className='numChar' type='number' step='4' onChange={(e) => setNumChar(e.target.value)}/>              
+                <input placeholder="default is 16" className='numChar' type='number' step='4' onChange={(e) => setNumChar(e.target.value)}/>              
                 </div>
               </div>
             </div>

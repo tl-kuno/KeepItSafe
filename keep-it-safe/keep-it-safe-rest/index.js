@@ -1,51 +1,27 @@
-const express = require("express");
-const app = express();
-const mysql = require("mysql");
-const cors = require("cors");
+import app from "./server.js"
+import mongodb from "mongodb"
+import dotenv from "dotenv"
+import LoginsDAO from "./dao/loginsDAO.js"
+dotenv.config()
+const MongoClient = mongodb.MongoClient
 
-app.use(cors());
-app.use(express.json());
+const port = process.env.PORT || 8000
 
-const db = mysql.createConnection({
-    user: "root",
-    host: "localhost",
-    password: "mysql2934Avenida.",
-    database: "keepitsafe"
+MongoClient.connect(
+    process.env.LOGINS_DB_URI,
+    {
+        maxPoolSize: 50,
+        wtimeoutMS:2500,
+        useNewUrlParser: true
+    },
+)
+.catch(err => {
+    console.error(err.stack)
+    process.exit(1)
 })
-
-PORT = 4500
-
-app.post('/add-new', (req, res) => {
-    console.log(req.body);
-    const websiteName = req.body.websiteName;
-    const websiteDomain = req.body.websiteDomain;
-    const username = req.body.username;
-    const password = req.body.password;
-
-    db.query("INSERT INTO logins (websiteName, websiteDomain, username, password) VALUES (?, ?, ?, ?)", 
-            [websiteName, websiteDomain, username, password], 
-            (err, result) =>  {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log("Login Saved!")
-                    res.send("Login Saved!")
-                }
-            }
-        );
-});
-
-app.get('/view-all', (req, res) => {
-    db.query("SELECT * FROM logins", 
-    (err, result) =>  {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(result);
-        }
-    });
-});
-
-
-app.listen(port=PORT, () => 
-console.log(`Server is running on port ${PORT}`));
+.then(async client => {
+    await LoginsDAO.injectDB(client)
+    app.listen(port, () => {
+        console.log(`listening on ${port}`)
+    })
+})
