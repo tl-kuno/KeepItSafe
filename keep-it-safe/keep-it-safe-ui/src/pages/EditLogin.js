@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import LoginDataService from '../services/login'
 import Navigation from '../components/Navigation';
 import ToggleSwitch from '../components/ToggleSwitch';
@@ -31,6 +31,7 @@ function EditLogin() {
         username: username,
         password: password,
       }
+      setLoginId(loginId)
       LoginDataService.updateLogin(data)
       alert(`Your login for ${websiteName} has been updated`)
       window.open("/view-all", "_parent")
