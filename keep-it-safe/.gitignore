@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+# virtual env
+/string-gen-microservice/.venv
+/string-gen-microservice/_pycache_
+/suggestion-search-microservice/.venv
+/suggestion-search-microservice/_pycache_
+
 # testing
 /coverage
 
